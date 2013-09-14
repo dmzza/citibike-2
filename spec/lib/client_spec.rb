@@ -19,6 +19,16 @@ describe Citibike::Client do
       end
     end
 
+    context ".updates" do
+      it "should load a list of updates" do
+        stats = Citibike::Client.updates
+
+        stats.first.should be_a(Citibike::Update)
+        stats.first.available_bikes.should_not be_nil
+        stats.first.last_update.should_not be_nil
+      end
+    end
+
     context ".helmets" do
       it "should load a list of helmets" do
         helms = Citibike::Client.helmets
@@ -61,6 +71,23 @@ describe Citibike::Client do
 
       it "should get back an array when unwrapped" do
         stats = unwrapped.stations
+
+        stats.should be_a(Hash)
+        stats['results'].first.should be_a(Hash)
+        stats['results'].first['id'].should_not be_nil
+      end
+    end
+
+    context "#updates" do
+      it "should get back a response object by default" do
+        stats = client.updates
+
+        stats.should be_a(Citibike::Responses::Update)
+        stats.first.should be_a(Citibike::Update)
+      end
+
+      it "should get back an array when unwrapped" do
+        stats = unwrapped.updates
 
         stats.should be_a(Hash)
         stats['results'].first.should be_a(Hash)

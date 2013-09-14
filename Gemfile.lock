@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    citibike (0.0.1)
+    citibike (0.1.0)
       faraday
       faraday_middleware
       yajl-ruby
@@ -17,8 +17,8 @@ GEM
       simplecov (>= 0.7)
       thor
     diff-lcs (1.2.4)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     faraday_middleware (0.9.0)
       faraday (>= 0.7.4, < 0.9)
     metaclass (0.0.1)

@@ -43,6 +43,17 @@ module Citibike
       Citibike::Responses::Station.new(resp)
     end
 
+    def updates
+      resp = self.connection.request(
+        :get,
+        Citibike::Update.path
+      )
+
+      return resp if @options[:unwrapped]
+
+      Citibike::Responses::Update.new(resp)
+    end
+
     def helmets
       resp = self.connection.request(
         :get,
@@ -71,6 +82,16 @@ module Citibike
         self.connection.request(
           :get,
           Citibike::Station.path
+        )
+      )
+    end
+
+    def self.updates
+      Citibike::Responses::Update.new(
+        # create a new connection in case
+        self.connection.request(
+          :get,
+          Citibike::Update.path
         )
       )
     end
