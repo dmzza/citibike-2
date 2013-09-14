@@ -34,6 +34,14 @@ module Citibike
     end
 
     #
+    # Returns the label of the station
+    #
+    # @return [String] [Label of the station]
+    def label
+      self['label']
+    end
+
+    #
     # Returns the address of the station
     #
     # @return [String] [Address of the station]
