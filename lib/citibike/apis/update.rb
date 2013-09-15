@@ -38,7 +38,7 @@ module Citibike
     #
     # @return [Integer] [Time of last update]
     def last_update
-      self['lastUpdate'].to_i
+      self['lastUpdate']
     end
 
   end
