@@ -23,7 +23,7 @@ module Citibike
     def initialize(data)
       @data = data['results']
       @success = data['ok']
-      @last_update = Time.at(data['last_updated'].to_i)
+      @last_update = data['last_updated']
 
       # build the id_hash
       @id_hash ||= {}
