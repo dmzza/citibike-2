@@ -8,7 +8,7 @@ module Citibike
 
       def initialize(data)
         lastUpdate = data['lastUpdate']
-        data['results'].collect! { |r| r.merge(:lastUpdate => 1) }
+        data['results'].collect! { |r| r.merge(:lastUpdate => lastUpdate) }
         data['results'].map! { |r| Citibike::Update.new(r) }
         super
       end
