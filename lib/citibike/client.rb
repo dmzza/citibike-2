@@ -150,6 +150,10 @@ module Citibike
         @connection ||= Citibike::Connection.new
       end
 
+      def self.altconnection
+        @altconnection ||= Citibike::AltConnection.new
+      end
+
   end
 
 end
