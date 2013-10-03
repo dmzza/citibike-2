@@ -116,6 +116,16 @@ module Citibike
       )
     end
 
+    def self.alt_updates
+      Citibike::Responses::AltUpdate.new(
+        # create a new connection in case
+        self.altconnection.request(
+          :get,
+          'stations/json'
+        )
+      )
+    end
+
     def self.helmets
       Citibike::Responses::Helmet.new(
         self.connection.request(
