@@ -66,12 +66,12 @@ module Citibike
     def alt_updates
       resp = self.altconnection.request(
         :get,
-        Citibike::Update.path
+        'stations/json'
       )
 
       return resp if @options[:unwrapped]
 
-      Citibike::Responses::Update.new(resp)
+      Citibike::Responses::AltUpdate.new(resp)
     end
 
     def helmets
