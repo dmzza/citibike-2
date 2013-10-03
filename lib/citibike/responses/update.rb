@@ -15,6 +15,17 @@ module Citibike
 
     end
 
+    class AltUpdate < Citibike::Response
+
+      def initialize(data)
+        lastUpdate = Time.now.to_i
+        data['stationBeanList'].collect! { |r| r.merge(:lastUpdate => lastUpdate) }
+        data['stationBeanList'].map! { |r| Citibike::Update.new(r) }
+        super
+      end
+
+    end
+
   end
 
 end

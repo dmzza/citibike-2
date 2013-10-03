@@ -9,7 +9,7 @@ module Citibike
   # unofficial API
   class Client
 
-    attr_reader :options, :connection
+    attr_reader :options, :connection, :altconnection
 
     VALID_KEYS = [:unwrapped]
 
@@ -26,6 +26,7 @@ module Citibike
       end
 
       @connection = Citibike::Connection.new(opts)
+      @altconnection = Citibike::AltConnection.new(opts)
     end
 
     #
@@ -44,7 +45,26 @@ module Citibike
     end
 
     def updates
-      resp = self.connection.request(
+      begin
+        resp = self.connection.request(
+          :get,
+          Citibike::Update.path
+        )
+      rescue Faraday::Error::ClientError => e
+        resp = self.altconnection.request(
+          :get,
+          '/stations/json'
+        )
+        return Citibike::Responses::AltUpdate.new(resp)
+      end
+
+      return resp if @options[:unwrapped]
+
+      Citibike::Responses::Update.new(resp)
+    end
+
+    def alt_updates
+      resp = self.altconnection.request(
         :get,
         Citibike::Update.path
       )
