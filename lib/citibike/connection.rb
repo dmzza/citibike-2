@@ -39,6 +39,7 @@ module Citibike
         connection.use Faraday::Request::UrlEncoded
         connection.use Faraday::Response::ParseJson unless @options[:raw]
         connection.use Faraday::Response::Logger if @options[:debug]
+        connection.use Faraday::Response::RaiseError
         if @options[:test]
           connection.adapter(@options[:adapter], @options[:stubs])
         else
