@@ -51,11 +51,11 @@ module Citibike
           Citibike::Update.path
         )
       rescue Faraday::Error::ClientError => e
-        resp = self.altconnection.request(
+        altresp = self.altconnection.request(
           :get,
-          '/stations/json'
+          'stations/json'
         )
-        return Citibike::Responses::AltUpdate.new(resp)
+        return Citibike::Responses::AltUpdate.new(altresp)
       end
 
       return resp if @options[:unwrapped]
