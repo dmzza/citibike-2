@@ -25,6 +25,12 @@ module Citibike
       @success = data['ok']
       @last_update = data['lastUpdate']
 
+      if @data.nil?
+        @data = data['stationBeanList']
+        @success = true
+        @last_update = Time.now.to_i
+      end
+
       # build the id_hash
       @id_hash ||= {}
       @data.each do |d|
