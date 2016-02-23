@@ -7,7 +7,7 @@ module Citibike
   class Station < Api
 
     def self.path
-      'v1/stations/list'
+      'v1/station/list'
     end
     #
     # Returns if this station is active
