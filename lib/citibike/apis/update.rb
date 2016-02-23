@@ -7,7 +7,7 @@ module Citibike
   class Update < Api
 
     def self.path
-      'data2/stations.php?updateOnly=true'
+      'v1/stations/updates'
     end
     #
     # Returns if this station is active
