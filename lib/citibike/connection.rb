@@ -13,7 +13,7 @@ module Citibike
       @options = {
         adapter: Faraday.default_adapter,
         headers: {
-          'Accept' => 'application/json; charset=utf-8',
+          'Accept' => 'text/plain, text/html, text/*, application/json; charset=utf-8',
           'UserAgent' => 'Citibike Gem'
         },
         proxy: nil,
@@ -91,7 +91,7 @@ module Citibike
       @options = {
         adapter: Faraday.default_adapter,
         headers: {
-          'Accept' => 'application/json; charset=utf-8',
+          'Accept' => 'text/plain, text/html, text/*, application/json; charset=utf-8',
           'UserAgent' => 'Citibike Gem'
         },
         proxy: nil,
