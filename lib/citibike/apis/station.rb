@@ -7,7 +7,7 @@ module Citibike
   class Station < Api
 
     def self.path
-      'data2/stations.php'
+      'v1/stations/list'
     end
     #
     # Returns if this station is active
