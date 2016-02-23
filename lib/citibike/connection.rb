@@ -24,7 +24,7 @@ module Citibike
         test: false,
         stubs: nil,
         raw: false,
-        format_path: true,
+        format_path: false,
         format: :json,
         url: 'http://appservices.citibikenyc.com/'
       }
@@ -102,7 +102,7 @@ module Citibike
         test: false,
         stubs: nil,
         raw: false,
-        format_path: true,
+        format_path: false,
         format: :json,
         url: 'http://citibikenyc.com/'
       }
